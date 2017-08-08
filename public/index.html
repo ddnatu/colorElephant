@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <base href="">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>
+  <body ng-app="myApp">
+    <h2> colorElephant Assignment </h2>
+    <div  ng-controller="myCtrl">
+
+    Choose:
+      <a href="/admin">Admin</a> |
+      <a href="/user">User</a> 
+
+      <div ng-view></div>
+
+      <form name="form" class="css-form" novalidate>
+
+        <label>Name:
+          <input type="text" ng-model="user.name" name="uName" required="" />
+        </label>
+        <br />
+
+        <div ng-show="form.$submitted || form.uName.$touched">
+          <div ng-show="form.uName.$error.required">Tell us your name.</div>
+        </div>
+
+        <label>E-mail:
+          <input type="email" ng-model="user.email" name="uEmail" required="" />
+        </label>
+        <br />
+        
+        <div ng-show="form.$submitted || form.uEmail.$touched">
+          <span ng-show="form.uEmail.$error.required">Tell us your email.</span>
+          <span ng-show="form.uEmail.$error.email">This is not a valid email.</span>
+        </div>
+
+        <label>URL:
+          <input type="url" name="input" ng-model="user.url" required>
+        <label>
+        <div ng-show= "form.$submitted || form.input.$touched">
+          <span ng-show= "form.input.$error.required">Required!</span>
+          <span ng-show= "form.input.$error.url">Not valid url!</span>
+        </div>
+
+
+
+
+        <div>Do you like working:</div>
+        <label><input type="radio" ng-model="user.yes" value="yes" />Yes</label>
+        <label><input type="radio" ng-model="user.no" value="no" />No</label>
+        <br />
+        <label>
+
+        
+
+        <input type="button" ng-click="reset(form)" value="Reset" />
+        <input type="submit" ng-click="update(user)" value="Save" />
+      </form>
+      <!--<pre>user = {{user | json}}</pre>
+      <pre>master = {{master | json}}</pre>-->
+    </div>
+
+    <script src="myRouter.js"></script>
+    <script src="myApp.js"></script>
+    <script src="myCtrl.js"></script>
+    <script src="myService.js"></script>
+    <script src="myDirective.js"></script>
+  </body>
+</html
